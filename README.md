@@ -59,7 +59,7 @@ Endpoint URL: /{hash}/
 Method: GET
 hash regex: r"[0-9a-zA-Z]{8}"
 ```
-Example request
+Example request:
 ```console
 curl -X GET http://127.0.0.1:8000/bycHGqQO/
 ```
