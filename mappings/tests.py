@@ -75,8 +75,8 @@ class UrlMappingTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # now try to revert
-        hash_string = response.data["short_url"].split("/")[-2]
-        revert_response = self.client.get(reverse("revert-short-url", args=[hash_string]))
+        url_mapping = UrlMapping.objects.get(long_url=data["long_url"])
+        revert_response = self.client.get(reverse("revert-short-url", args=[url_mapping.hash]))
         self.assertEqual(revert_response.data["long_url"], data["long_url"])
         self.assertEqual(revert_response.status_code, status.HTTP_200_OK)
 

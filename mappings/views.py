@@ -37,7 +37,7 @@ def create_short_url(request):
     # fake short urls with other domains), endpoint domain is always our.
     # We have to check only the hash regex and can revert the short_url to long_url if UrlMapping
     # object has been found.
-    short_url = "{}{}".format(domain, reverse("revert-short-url", args=[url_mapping_obj.hash]))
+    short_url = "{}://{}{}".format(request.scheme, domain, reverse("revert-short-url", args=[url_mapping_obj.hash]))
     data = {
         "short_url": short_url
     }
