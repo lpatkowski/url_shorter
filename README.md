@@ -44,7 +44,7 @@ curl -X POST http://127.0.0.1:8000/create/ -H 'Content-Type: application/json' -
 Response HTTP 201 Created:
 ```json
     {
-        "short_url":"127.0.0.1:8000/bycHGqQO/"
+        "short_url":"http://127.0.0.1:8000/bycHGqQO/"
     }
 ```
 ```
@@ -61,7 +61,7 @@ hash regex: r"[0-9a-zA-Z]{8}"
 ```
 Example request
 ```console
-curl -X GET 127.0.0.1:8000/bycHGqQO/
+curl -X GET http://127.0.0.1:8000/bycHGqQO/
 ```
 Response Http 200 OK:
 ```json
