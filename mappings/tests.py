@@ -17,6 +17,18 @@ class UrlMappingTests(APITestCase):
             long_url="http://example.com/very-very/long/url/even-longer"
         )
 
+    def test_create_short_url_user_unauthorized(self):
+        self.client.logout()
+        data = {
+            "long_url": "https://www.wp.pl/testujemy-bardzo-mocno/1234/test/test/",
+        }
+
+        response = self.client.post(reverse("create-short-url"), data=data, headers={})
+
+        self.assertEqual(response.data, {
+            'detail': ErrorDetail(string='Authentication credentials were not provided.', code='not_authenticated')})
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
     def test_create_short_url_invalid_data(self):
         data = {
             "invalid": "invalid",
